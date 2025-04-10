@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://4y4bpysc5bh6"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/end_of_the_level.gd" id="1_1q82j"]
+[ext_resource type="Texture2D" uid="uid://c73ia16sblgdf" path="res://Assets/Sprites/NextSign.png" id="1_nxw6x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urdqb"]
+size = Vector2(64, 64)
+
+[node name="EndOfTheLevel" type="Area2D"]
+z_index = 7
+script = ExtResource("1_1q82j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nxw6x")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_urdqb")

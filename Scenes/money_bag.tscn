@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://lw6tob7ms1dg"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/money_bag.gd" id="1_12u65"]
+[ext_resource type="Texture2D" uid="uid://dovymsmyb4pas" path="res://Assets/Sprites/G_Idle_(NoShadow).png" id="1_fo0oa"]
+[ext_resource type="Script" path="res://Scenes/Scripts/Value.gd" id="3_gp5ly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys5df"]
+atlas = ExtResource("1_fo0oa")
+region = Rect2(32, 32, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gkqhi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys5df")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryk2y"]
+size = Vector2(63, 63)
+
+[node name="Bag" type="Area2D"]
+z_index = 5
+script = ExtResource("1_12u65")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gkqhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ryk2y")
+
+[node name="Value" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = -9.0
+script = ExtResource("3_gp5ly")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
